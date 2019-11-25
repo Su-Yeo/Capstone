@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homestay.korea.DAO.IPlaceDetailDataDAO">
+
+	<select id="readWithPlaceDetailData" resultType="com.homestay.korea.DTO.PlaceDetailDataDTO">
+		SELECT 
+			*
+		FROM
+			place_detailData
+		WHERE
+			contentid=#{contentid}
+	</select>
+	
+	<select id="readWithPlaceDetailDataContent_value" resultType="com.homestay.korea.DTO.PlaceDetailDataDTO">
+		SELECT 
+			*
+		FROM
+			place_detailData
+		WHERE
+			contentid=#{contentid}
+		AND
+			content_category = #{content_category}
+	</select>
+	
+	<insert id="insert">
+		<!-- temp_place테이블이 아닌 place 2개있음-->
+		insert into temp_place_detailData(cotent_no, content_category, content, contentid)
+		values(
+			(SELECT IFNULL(MAX(cotent_no)+1,1) FROM temp_place_detailData pd),
+			#{content_category},#{content},#{contentid}
+		)
+	</insert>
+	
+	<select id="readDetailData" resultType="com.homestay.korea.DTO.PlaceDetailDataDTO">
+		<!-- temp_place_detailData테이블이 아닌 place_detailData -->
+		select *
+		from temp_place_detailData
+		where contentid=#{contentId}
+	</select>
+
+	<delete id="deleteDetailData">
+		<!-- temp_place_detailData테이블이 아닌 temp_place_detailData -->
+		delete from temp_place_detailData where contentid=#{contentId}
+	</delete>
+	
+	<select id="readTitles" resultType="java.lang.String">
+		select content  from place_detailData where content_category = '제목' and contentid = #{contentIds}
+<!-- 		<foreach  collection="contentIds"  item="item" index="index" separator="," open="(" close=")">
+      	  #{item,jdbcType=VARCHAR}
+    	</foreach> -->
+	</select>
+</mapper>
+
+
+

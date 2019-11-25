@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homestay.korea.DAO.IJoinPlaceTourImageDAO">
+	
+	<select id="readWithContentid" resultType="com.homestay.korea.DTO.JoinPlaceTourImageDTO">
+		select * from tour_image where contentid=#{contentid}
+	</select>
+	
+ <!-- 이미지가 여러개일경우 1개만 가져옴 -->
+	<select id="readWithThemeLocationStartEndOrderByParm" parameterType="map" resultType="com.homestay.korea.DTO.JoinPlaceTourImageDTO">
+		SELECT DISTINCT(place.contentid) as contentid, createdtime, modifiedtime, theme, count, location, imageurl, imageno 
+		FROM place
+		INNER JOIN tour_image ON place.contentid = tour_image.contentid 
+		WHERE place.contentid = tour_image.contentid 
+            AND place.theme = #{theme}
+            AND place.location = #{location}
+		Group By place.contentid
+        Order BY #{param}
+        LIMIT #{start},#{count}
+	</select>
+
+	 <!-- 이미지가 여러개일경우 1개만 가져옴 -->
+	<select id="readWithThemeStartEndOrderByParm" parameterType="map" resultType="com.homestay.korea.DTO.JoinPlaceTourImageDTO">
+		SELECT DISTINCT(place.contentid) as contentid, createdtime, modifiedtime, theme, count, location, imageurl, imageno
+		FROM place
+		INNER JOIN tour_image ON place.contentid = tour_image.contentid 
+		WHERE place.contentid = tour_image.contentid 
+            AND place.theme = #{theme}
+		Group By place.contentid
+        Order BY #{param}
+        LIMIT #{start},#{count}
+	</select>
+
+	
+
+	
+</mapper>
