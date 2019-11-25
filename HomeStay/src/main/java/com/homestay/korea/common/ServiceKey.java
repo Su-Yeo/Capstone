@@ -9,5 +9,5 @@ public class ServiceKey {
 			서비스키2,
 			서비스키3,
 			서비스키4
-			};
+	};
 }
