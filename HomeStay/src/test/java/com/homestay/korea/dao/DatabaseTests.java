@@ -1,4 +1,4 @@
-package com.homestay.korea.dao;
+ï»¿package com.homestay.korea.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -26,9 +26,9 @@ public class DatabaseTests {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url = "jdbc:mysql://ÁÖ¼Ò";
-			String user = "¾ÆÀÌµğ";
-			String pwd = "ÆĞ½º¿öµå";
+			String url = "jdbc:mysql://ì£¼ì†Œ";
+			String user = "ì•„ì´ë””";
+			String pwd = "íŒ¨ìŠ¤ì›Œë“œ";
 
 			con = DriverManager.getConnection(url, user, pwd);
 		} catch (ClassNotFoundException e) {

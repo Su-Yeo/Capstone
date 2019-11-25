@@ -1,4 +1,4 @@
-package com.homestay.korea.config;
+ï»¿package com.homestay.korea.config;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,9 +26,9 @@ public class RootConfig {
 	public DataSource dataSource() {
 		DataSource ds=new DataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://ÁÖ¼Ò?autoReconnect=true"); 
-		ds.setUsername("¾ÆÀÌµğ"); 
-		ds.setPassword("ºñ¹Ğ¹øÈ£"); 
+		ds.setUrl("jdbc:mysql://ì£¼ì†Œ?autoReconnect=true"); 
+		ds.setUsername("ì•„ì´ë””"); 
+		ds.setPassword("ë¹„ë°€ë²ˆí˜¸"); 
 //		ds.setInitialSize(2);
 //		ds.setMaxActive(10);
 //		ds.setTestWhileIdle(true);
