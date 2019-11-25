@@ -27,8 +27,8 @@ public class RootConfig {
 		DataSource ds=new DataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://주소?autoReconnect=true"); 
-		ds.setUsername("capstone"); 
-		ds.setPassword("capstone1234"); 
+		ds.setUsername("아이디"); 
+		ds.setPassword("비밀번호"); 
 //		ds.setInitialSize(2);
 //		ds.setMaxActive(10);
 //		ds.setTestWhileIdle(true);
